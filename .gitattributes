@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Keep development files out of the release zip built by `git archive`.
+# README.md is deliberately shipped: it documents configuration for anyone who
+# downloads a release directly.
+/.github        export-ignore
+/.idea          export-ignore
+/.gitattributes export-ignore
+/.gitignore     export-ignore
