@@ -65,6 +65,25 @@ The Secure Mode key is unique per Beacon and shared by every site using that Bea
 
 The plugin never renders the key back into the settings page — once saved, the field stays blank and shows only that a key exists. Leave it blank to keep the saved key, enter a new value to replace it, or tick **Remove the saved key** to clear it. Even so, anyone who is already an administrator on the site can read the key from the database or from `wp-config.php`, so only install this on sites whose administrators you trust with that Beacon. If you deploy across sites with different trust levels, give each its own Beacon so a leak is contained to one.
 
+## Sending tickets to the MPS Client Portal
+
+For MPS Care Plan sites, the plugin can also send support tickets straight to the MPS Client Portal. This is off until a portal site key is saved, and the Help Scout Beacon keeps working either way.
+
+1. MPS issues a key for the site in the portal's agent panel (**Care Plan sites**). The key is shown once.
+2. Enter it as **Portal site key** under **Settings → MPS Care Plan** and save. Leave **Portal URL** blank to use `https://portal.myprojectsolution.com`.
+3. Administrators now see **Dashboard → Get support**. The form sends a subject, priority, and message, along with the site URL, WordPress and PHP versions, active theme, active plugin count, and the administrator's name and email.
+
+The ticket lands on the site's company in the portal, and the confirmation links to it there. If the portal rejects the key, the form says so and asks the administrator to contact MPS.
+
+The key and URL can also be set in `wp-config.php`, and a constant takes precedence over the saved setting:
+
+```php
+define( 'MPS_CARE_SITE_KEY',   'mps_site_...' );
+define( 'MPS_CARE_PORTAL_URL', 'https://portal.myprojectsolution.com' );
+```
+
+Like the Secure Mode key, the site key is never displayed again after saving. It only lets this site open tickets for its own company: it cannot read tickets, and MPS can replace it from the portal at any time, which stops the old key at once.
+
 ## Using this on your own site
 
 You're welcome to. Nothing here is tied to My Project Solution's Help Scout account — the Beacon ID and Secure Mode key are entirely yours, and a fresh install with your own credentials sends support conversations to **your** Help Scout inbox, not ours.
