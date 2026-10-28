@@ -4,7 +4,7 @@
  * Plugin URI: https://myprojectsolution.com/mps-care-plan
  * Update URI: https://github.com/My-Project-Solution/MPS-Care-Plan-Support-Widget
  * Description: Adds a Help Scout Beacon support widget to the WordPress admin for administrators, with Secure Mode identity verification for support chat and ticket creation, and an optional Get support page that sends tickets to the MPS Client Portal.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Requires at least: 5.8
  * Requires PHP: 7.2
  * Author: My Project Solution
